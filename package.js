@@ -8,7 +8,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.3.4.4');
-  api.use('ecmascript');
+  api.use(['ecmascript', 'http', 'underscore']);
   api.use('simple:rest@1.1.1')
   api.mainModule('server/main.js', 'server');
 });
