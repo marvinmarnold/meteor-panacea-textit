@@ -1,4 +1,6 @@
 import { Meteor } from 'meteor/meteor';
+import { Sms } from '../../common/collections/sms.js';
+import { insertOutgoingSms, sendSmsToPanacea } from '../../lib/sms.js';
 
 // Endpoint for Message Terminating (MT), Panacea to user
 // GET request with to, from, content query parameters
@@ -15,41 +17,13 @@ import { Meteor } from 'meteor/meteor';
 // int message_class: Message class
 // int auto_detect_encoding: Auto detect the encoding and send appropriately (useful for sending arabic, hindi, unicode etc messages) 1 = on, 0 = off, defaults off.
 
-Meteor.method(Meteor.settings.SECRET_TOKEN + "/textit-to-panacea", (to, from, content) => {
+const outgoingEndpoint = Meteor.settings.SECRET_TOKEN + "/textit-to-panacea"
+Meteor.method(outgoingEndpoint, (to, from, content) => {
   console.log('textit-to-panacea');
 
-  let url = Meteor.settings.PANACEA_ENDPOINT + "/json?action=message_send"
+  const outgoingSmsId = insertOutgoingSms({to, from, text})
+  sendSmsToPanacea(outgoingSmsId);  
 
-  const reportUrl = Meteor.settings.galaxy.meteor.com.env.ROOT_URL +
-    Meteor.settings.SECRET_TOKEN +
-    "/panacea-status-update"
-
-  const query = {
-    username: Meteor.settings.PANACEA_USERNAME,
-    password: Meteor.settings.PANACEA_PASSWORD,
-    to: to,
-    from: from,
-    text: content,
-    report_url: reportUrl
-  }
-
-  _.each(query, (v, k) => {
-    url = url + "&" + k + "=" + v
-  });
-
-  console.log(url);
-
-
-
-  HTTP.get(url, {}, (error, result) => {
-    if(error) {
-      console.log("error", error);
-    }
-    if(result) {
-      console.log('got some result');
-      console.log(result);
-    }
-  });
   return 1;
 }, {
   httpMethod: "get",
@@ -60,4 +34,4 @@ Meteor.method(Meteor.settings.SECRET_TOKEN + "/textit-to-panacea", (to, from, co
 
     return [ q.to, q.from, q.text ];
   }
-})
+});
