@@ -1,0 +1,12 @@
+{
+  "galaxy.meteor.com": {
+    "env": {
+      "ROOT_URL": "https://example.com",
+      "MONGO_URL": "mongodb://<user>:<password>@example.com"
+    }
+  },
+  "SECRET_TOKEN": "SOME_SUPER_SECRET",
+  "PANACEA_ENDPOINT": "https://api.panaceamobile.com",
+  "PANACEA_USERNAME": "username",
+  "PANACEA_PASSWORD": "password"
+}
