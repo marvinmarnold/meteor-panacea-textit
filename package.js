@@ -14,7 +14,10 @@ Package.onUse(function(api) {
     'aldeed:simple-schema@1.5.3',
     'aldeed:collection2@2.8.0'
   ])
-  api.mainModule('server/main.js', 'server');
+
+  api.addFiles('./server/main.js', 'server');
+
+  api.mainModule('./common/main.js');
 });
 
 Package.onTest(function(api) {
