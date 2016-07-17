@@ -18,11 +18,11 @@ import { insertOutgoingSms, sendSmsToPanacea } from '../../lib/sms.js';
 // int auto_detect_encoding: Auto detect the encoding and send appropriately (useful for sending arabic, hindi, unicode etc messages) 1 = on, 0 = off, defaults off.
 
 const outgoingEndpoint = Meteor.settings.SECRET_TOKEN + "/textit-to-panacea"
-Meteor.method(outgoingEndpoint, (to, from, content) => {
-  console.log('textit-to-panacea');
+Meteor.method(outgoingEndpoint, (to, from, text) => {
 
-  const outgoingSmsId = insertOutgoingSms({to, from, text})
-  sendSmsToPanacea(outgoingSmsId);  
+
+  const outgoingSmsId = insertOutgoingSms(to, from, text)
+  sendSmsToPanacea(outgoingSmsId);
 
   return 1;
 }, {
@@ -31,7 +31,8 @@ Meteor.method(outgoingEndpoint, (to, from, content) => {
     // TextIt will structure in the following way
     // http://myservice.com/send.php?from={{from}}&text={{text}}&to={{to}}
     var q = request.query;
-
+    console.log('textit-to-panacea');
+    console.log(q);
     return [ q.to, q.from, q.text ];
   }
 });
