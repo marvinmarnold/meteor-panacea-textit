@@ -32,6 +32,7 @@ Meteor.method(outgoingEndpoint, (to, from, text) => {
     var q = request.query;
     console.log('textit-to-panacea');
     console.log(q);
+    
     return [ q.to, q.from, q.text ];
   }
 });
