@@ -17,7 +17,7 @@ Meteor.method(incomingEndpoint, (to, from, text) => {
 
     var q = request.query;
     console.log(q);
-    
-    return [ q.to, q.from, q.text ];
+
+    return [ q.to, q.from, q.message ];
   }
 })
