@@ -16,7 +16,7 @@ Meteor.method(incomingEndpoint, (to, from, text) => {
     console.log('panacea-to-textit');
 
     var q = request.query;
-    console.log(q);
+    // console.log(q);
 
     return [ q.to, q.from, q.message ];
   }
