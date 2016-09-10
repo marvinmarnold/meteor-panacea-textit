@@ -43,7 +43,12 @@ Representation of the path a SMS took to reach the system. This is basically a p
 - **urn:** string representation of phone number
 - **language:** optional string of language this channel is for. In some use cases, it is desirable to have one language per channel.
 
-TODO: isntructions for setting
+To setup a channel:
+
+- Go to textit.in
+- Click on your username in the upper right hand to take you to Account Settings
+- Click 'Add Channel' -> select API channel
+- The send URL should be in the form GET  https://HOST/methods/SECRET_TOKEN/textit-to-panacea?from={{from}}&text={{text}}&to={{to}}&from_no_plus={{from_no_plus}}&to_no_plus={{to_no_plus}}&id={{id}}
 
 ## Endpoints
 Once installed, your application will now have the following endpoints. Each endpoint is relative to `/methods/SECRET_TOKEN` (e.g. `example.com/methods/SECRET_TOKEN/endpoint`)
