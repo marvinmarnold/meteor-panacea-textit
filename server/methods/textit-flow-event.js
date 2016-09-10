@@ -6,7 +6,7 @@ import { insertOutgoingSms, sendSmsToPanacea } from '../../lib/sms.js';
 const eventEndpoint = Meteor.settings.SECRET_TOKEN + "/textit-flow-event"
 Meteor.method(eventEndpoint, (flowId, key, value) => {
 
-  return FlowEvents.insert({ flowId, label, value})
+  return FlowEvents.insert({ flowId, key, value})
 
 }, {
   httpMethod: "post",

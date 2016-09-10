@@ -4,5 +4,13 @@ export default FlowEventsSchema = new SimpleSchema({
   },
   value: {
     type: String
+  },
+  placement: {
+    type: String,
+    optional:  true
+  },
+  medium: {
+    type: String,
+    optional: true
   }
 });
