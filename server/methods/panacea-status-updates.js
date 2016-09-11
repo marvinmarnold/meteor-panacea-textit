@@ -9,9 +9,13 @@ Meteor.method(Meteor.settings.SECRET_TOKEN + "/panacea-status-updates", (to, fro
   httpMethod: "get",
   getArgsFromRequest(request) {
     console.log('panacea-status-updates');
-    console.log(request.body);
+    // console.log(request);
+
+    console.log('params');
+    console.log(request.params);
     var q = request.query;
 
-    return [ q.to, q.from, q.content ];
+    return ["A", "B", "C"]
+    // return [ q.to, q.from, q.content ];
   }
 })

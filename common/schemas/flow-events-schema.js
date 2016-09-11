@@ -12,5 +12,8 @@ export default FlowEventsSchema = new SimpleSchema({
   medium: {
     type: String,
     optional: true
+  },
+  flowHistoryId: {
+    type: String
   }
 });

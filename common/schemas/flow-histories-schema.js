@@ -7,5 +7,8 @@ export default FlowHistoriesSchema = new SimpleSchema({
   },
   contactNumber: {
     type: String
+  },
+  createdAt: {
+    type: Date
   }
 });
