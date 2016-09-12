@@ -33,5 +33,17 @@ export default SmsSchema = new SimpleSchema({
   receivedAt: {
     type: Date,
     optional: true
+  },
+  createdAt: {
+    type: Date,
+    autoValue: function() {
+      if (this.isInsert) {
+        return new Date();
+      } else if (this.isUpsert) {
+        return { $setOnInsert: new Date() };
+      } else {
+        this.unset();
+      }
+    }
   }
 });
