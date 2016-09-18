@@ -11,6 +11,12 @@ export default FlowsSchema = new SimpleSchema({
   "triggers.$.medium": {
       type: String
   },
+  // "triggers.$.placementProvince": {
+  //     type: String
+  // },
+  // "triggers.$.placementCity": {
+  //     type: String
+  // },
   "triggers.$.placement": {
       type: String
   },

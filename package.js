@@ -12,7 +12,8 @@ Package.onUse(function(api) {
   api.use([
     'simple:rest@1.1.1',
     'aldeed:simple-schema@1.5.3',
-    'aldeed:collection2@2.8.0'
+    'aldeed:collection2@2.8.0',
+    'simple:json-routes@2.1.0'
   ])
 
   api.addFiles('./server/main.js', 'server');

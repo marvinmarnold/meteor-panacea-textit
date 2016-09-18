@@ -1,21 +1,18 @@
-import { Meteor } from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor'
+import { Sms, SmsStatuses } from 'meteor/marvin:panacea-textit'
 
 // Endpoint for status updates about MO status updates
 // http:://some.thing.com/some.page/some.id&status=%d
-Meteor.method(Meteor.settings.SECRET_TOKEN + "/panacea-status-updates", (to, from, content) => {
-  // console.log(to);
-  return 1;
-}, {
-  httpMethod: "get",
-  getArgsFromRequest(request) {
-    console.log('panacea-status-updates');
-    // console.log(request);
+const path = "/methods/" + Meteor.settings.SECRET_TOKEN + "/panacea-status-updates/:id"
+JsonRoutes.add("get", path, (req, res, next) => {
+  const status = req.query.status
+  const smsId = req.params.id
+  const sms = Sms.findOne(smsId)
 
-    console.log('params');
-    console.log(request.params);
-    var q = request.query;
+  if(sms)
+    SmsStatuses.insert({smsId, status})
 
-    return ["A", "B", "C"]
-    // return [ q.to, q.from, q.content ];
-  }
-})
+  JsonRoutes.sendResult(res, {
+    data: true
+  });
+});
