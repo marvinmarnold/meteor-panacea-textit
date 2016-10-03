@@ -16,6 +16,9 @@ export default FlowEventsSchema = new SimpleSchema({
   flowHistoryId: {
     type: String
   },
+  contactId: {
+    type: String
+  },
   createdAt: {
     type: Date,
     autoValue: function() {

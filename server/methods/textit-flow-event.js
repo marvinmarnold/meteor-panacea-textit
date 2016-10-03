@@ -44,6 +44,8 @@ Meteor.method(eventEndpoint, (textItId, contactNumber, values) => {
         args["value"] = v.category.base
       }
 
+      args["contactId"] = contact._id
+
       const existingEvent = FlowEvents.findOne(args)
 
       if(!existingEvent) {
