@@ -5,20 +5,16 @@ import { FlowEvents } from '../../common/collections/flow-events.js';
 import { FlowHistories } from '../../common/collections/flow-histories.js';
 import { Sms } from '../../common/collections/sms.js';
 import { insertOutgoingSms, sendSmsToPanacea } from '../../lib/sms.js';
+import { findOrInsertContact } from '../../lib/contacts.js';
 
 const eventEndpoint = Meteor.settings.SECRET_TOKEN + "/textit-flow-event"
 Meteor.method(eventEndpoint, (textItId, contactNumber, values) => {
   const flow = Flows.findOne({textItId})
   if(flow) {
     let flowHistory = FlowHistories.findOne({flowId: flow._id, contactNumber}, {sort: {createdAt: -1}})
+    const contact = findOrInsertContact(contactNumber);
     if(!flowHistory) {
       console.log("Could not find FlowHistory with flowId " + flow._id);
-      let contact = Contacts.findOne({urn: contactNumber});
-
-      if(!contact) {
-        const contactId = Contacts.insert({urn: contactNumber})
-        contact = Contacts.findOne(contactId)
-      }
 
       const flowHistoryId = FlowHistories.insert({
         flowId: flow._id,
