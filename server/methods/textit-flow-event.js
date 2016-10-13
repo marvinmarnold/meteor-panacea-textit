@@ -14,7 +14,7 @@ Meteor.method(eventEndpoint, (textItId, contactNumber, values) => {
     let flowHistory = FlowHistories.findOne({flowId: flow._id, contactNumber}, {sort: {createdAt: -1}})
     const contact = findOrInsertContact(contactNumber);
     if(!flowHistory) {
-      console.log("Could not find FlowHistory with flowId " + flow._id);
+      // console.log("Could not find FlowHistory with flowId " + flow._id);
 
       const flowHistoryId = FlowHistories.insert({
         flowId: flow._id,
@@ -55,7 +55,7 @@ Meteor.method(eventEndpoint, (textItId, contactNumber, values) => {
 }, {
   httpMethod: "post",
   getArgsFromRequest(request) {
-    console.log('textit-flow-event');
+    // console.log('textit-flow-event');
     if(request.body) {
       const body = request.body
       const res = [body.flow, body.phone, JSON.parse(body.values)]
