@@ -1,3 +1,4 @@
+import './methods/flow-methods.js';
 import './methods/panacea-to-textit.js';
 import './methods/textit-flow-event.js';
 import './methods/textit-to-panacea.js';
