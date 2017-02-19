@@ -5,12 +5,13 @@ import { FlowEvents } from './collections/flow-events.js'
 import { FlowHistories } from './collections/flow-histories.js'
 import { Sms } from './collections/sms.js'
 import { SmsStatuses } from './collections/sms-statuses.js'
-import { LANGUAGES } from '../lib/constants.js'
+import { LANGUAGES, UUIDS } from '../lib/constants.js'
 import { findOrInsertContact, getUrnFromTextItCallback } from '../lib/contacts.js'
-import { insertOutgoingSms, sendSmsToPanacea } from '../lib/sms.js'
+import { insertOutgoingSms, sendSmsToPanacea, sendSms } from '../lib/sms.js'
 
 export {
   LANGUAGES,
+	UUIDS,
 
   Channels,
   Contacts,

@@ -9,8 +9,6 @@ Meteor.method(path, () => {
 }, {
   httpMethod: "get",
   getArgsFromRequest(request) {
-    console.log("+++++ FLOWS +++++");
-
     return [];
   }
 })

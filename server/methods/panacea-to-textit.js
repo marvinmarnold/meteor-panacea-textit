@@ -14,10 +14,7 @@ Meteor.method(incomingEndpoint, (to, from, text) => {
 }, {
   httpMethod: "get",
   getArgsFromRequest(request) {
-    console.log("+++++ PANACEA TO TEXTIT +++++");
     var q = request.query;
-
-    console.log(q);
 
     return [ q.to, q.from, q.message ];
   }
