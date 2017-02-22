@@ -26,9 +26,11 @@ Meteor.method(outgoingEndpoint, (to, from, text) => {
 }, {
   httpMethod: "get",
   getArgsFromRequest(request) {
+		// console.log("Sending message to Panacea");
     // TextIt will structure in the following way
     // http://myservice.com/send.php?from={{from}}&text={{text}}&to={{to}}
     var q = request.query;
+		// console.log(q);
 
     return [ q.to, q.from, q.text ];
   }

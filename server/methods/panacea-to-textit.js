@@ -15,6 +15,8 @@ Meteor.method(incomingEndpoint, (to, from, text) => {
   httpMethod: "get",
   getArgsFromRequest(request) {
     var q = request.query;
+		// console.log("Sending message to TextIt");
+		// console.log(q);
 
     return [ q.to, q.from, q.message ];
   }

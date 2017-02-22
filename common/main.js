@@ -6,8 +6,8 @@ import { FlowHistories } from './collections/flow-histories.js'
 import { Sms } from './collections/sms.js'
 import { SmsStatuses } from './collections/sms-statuses.js'
 import { LANGUAGES, UUIDS } from '../lib/constants.js'
-import { findOrInsertContact, getUrnFromTextItCallback } from '../lib/contacts.js'
-import { insertOutgoingSms, sendSmsToPanacea, sendSms } from '../lib/sms.js'
+import { getUrnFromTextItCallback } from '../lib/contacts.js'
+import { insertOutgoingSms, sendSmsToPanacea, sendSms, findOrNewContact } from '../lib/sms.js'
 
 export {
   LANGUAGES,
@@ -22,7 +22,7 @@ export {
   SmsStatuses,
 
   insertOutgoingSms,
-  findOrInsertContact,
+	findOrNewContact,
   manualProvinceInputEndpoint,
   sendSmsToPanacea,
   sendSms,
