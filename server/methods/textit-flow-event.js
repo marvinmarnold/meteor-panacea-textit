@@ -43,7 +43,8 @@ Meteor.method(eventEndpoint, (textItId, contactNumber, values) => {
     _.each(values, v => {
       let args = {
         key: v.label,
-        flowHistoryId: flowHistory._id
+        flowHistoryId: flowHistory._id,
+				timestamp: new Date(v.time)
       }
 
       // Normally, we want to store the sanitized values

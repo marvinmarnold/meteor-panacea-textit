@@ -19,6 +19,7 @@ import { insertOutgoingSms, sendSmsToPanacea } from '../../lib/sms.js';
 
 const outgoingEndpoint = Meteor.settings.SECRET_TOKEN + "/textit-to-panacea"
 Meteor.method(outgoingEndpoint, (to, from, text) => {
+	console.log("Received a message from TextIt. From: " + from + ", to: " + to + ", text: " + text);
   const outgoingSmsId = insertOutgoingSms(to, from, text)
   sendSmsToPanacea(outgoingSmsId);
 

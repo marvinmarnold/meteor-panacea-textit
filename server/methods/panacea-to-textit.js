@@ -7,6 +7,7 @@ import { insertIncomingSms, sendSmsToTextIt, watchForTrigger } from '../../lib/s
 const incomingEndpoint = Meteor.settings.SECRET_TOKEN + "/panacea-to-textit";
 Meteor.method(incomingEndpoint, (to, from, text) => {
   const incomingSmsId = insertIncomingSms(to, from, text)
+	console.log("Received a message from Panacea. From: " + from + ", to: " + to + ", text: " + text);
   sendSmsToTextIt(incomingSmsId);
   watchForTrigger(incomingSmsId);
 
